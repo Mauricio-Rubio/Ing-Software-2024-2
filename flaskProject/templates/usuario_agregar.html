@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Agregar Usuario</title>
+</head>
+<body>
+    
+    <form action="{{ url_for('usuario.agregar_usuario') }}" method="POST">
+        <h1>Agregar Usuario</h1>
+        <input type="text" name="nombre" placeholder="Nombre">
+        <input type="text" name="apPat" placeholder="Apellido Paterno">
+        <input type="text" name="apMat" placeholder="Apellido Materno">
+        <input type="password" name="password" placeholder="Password">
+        <input type="text" name="email" placeholder="Email">
+        <input type="file" name="profilePicture" accept="image/*">
+        <input type="checkbox" name="superUser" value="1">
+        <input type="submit" value="Agregar">
+    </form>
+    {% if get_flashed_messages() %} {% for message in get_flashed_messages() %}
+    <p>{{ message }}</p>
+    {% endfor %} {% endif %}
+    <a href="{{ url_for('usuario.ver_usuario') }}">Cancelar</a>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Película</title>
+</head>
+<body>
+
+    {{ pelicula}}
+    <form action="{{ url_for('pelicula.actualizar_pelicula', pelicula_id=pelicula.idPelicula) }}" method="POST">
+        <h1>Modificar Película</h1>
+        <input type="text" name="nombre" placeholder="Título" value="{{ pelicula.nombre }}">
+        <input type="text" name="genero" placeholder="Genero" value="{{ pelicula.genero }}">
+        <input type="text" name="duracion" placeholder="Duración" value="{{ pelicula.duracion }}">
+        <input type="text" name="inventario" placeholder="Inventario" value="{{ pelicula.inventario }}">
+        <input type="submit" value="Modificar">
+    </form>
+    {% if get_flashed_messages() %} {% for message in get_flashed_messages() %}
+    <p>{{ message }}</p>
+    {% endfor %} {% endif %}
+    <a href="{{ url_for('pelicula.ver_peliculas') }}">Cancelar</a>
+</body>
+</html>

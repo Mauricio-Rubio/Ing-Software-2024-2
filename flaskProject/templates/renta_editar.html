@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Editar Renta</title>
+  </head>
+  <body>
+    {{ remta }}
+    <form action="{{ url_for('renta.actualizar_renta', renta_id=renta.idRentar) }}" method="POST">
+      <h1>Editar Renta</h1>
+      <input type="text" name="idUsuario" placeholder="ID Película" value="{{ renta.idUsuario }}" readonly/>
+      <input type="text" name="idPelicula" placeholder="ID Usuario" value="{{ renta.idPelicula }}" readonly/>
+      <input type="text" name="fecha_renta" placeholder="Fecha de Renta" value="{{ renta.fecha_renta }}" readonly/>
+      <input type="text" name="dias_de_renta" placeholder="Dias de Renta" value="{{ renta.dias_de_renta }}" readonly/>
+      Entregada <input type="checkbox" name="estatus" value="1" value="{{ renta.status }}" />
+      <input type="submit" value="Modificar" />
+    </form>
+    {% if get_flashed_messages() %} {% for message in get_flashed_messages() %}
+    <p>{{ message }}</p>
+    {% endfor %} {% endif %}
+    <a href="{{ url_for('renta.ver_renta') }}">Cancelar</a>
+  </body>
+</html>

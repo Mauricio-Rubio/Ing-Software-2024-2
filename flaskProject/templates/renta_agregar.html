@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Agregar Renta</title>
+  </head>
+  <body>
+    <form action="{{ url_for('renta.agregar_renta') }}" method="POST">
+      <h1>Agregar Renta</h1>
+      <input type="text" name="idUsuario" placeholder="ID Película" />
+      <input type="text" name="idPelicula" placeholder="ID Usuario" />
+      <input type="date" name="fecha_renta" placeholder="Fecha de Renta" />
+      <input type="text" name="dias_de_renta" placeholder="Dias de Renta" />
+        Entregada <input type="checkbox" name="estatus" value="1" /> 
+      <input type="submit" value="Agregar" />
+    </form>
+    {% if get_flashed_messages() %} {% for message in get_flashed_messages() %}
+    <p>{{ message }}</p>
+    {% endfor %} {% endif %}
+    <a href="{{ url_for('renta.ver_renta') }}">Cancelar</a>
+  </body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Agregar usuario</title>
+  </head>
+  <body>
+    <h1>Bienvenido a la página de usuarios</h1>
+
+    <ul>
+      {% for usuario in usuarios %}
+      <li>
+        {{ usuario }}
+        <form method="GET" action="{{ url_for('usuario.actualizar_usuario', usuario_id=usuario.idUsuario) }}" style="display: inline;">
+            <button type="submit">Actualizar</button>
+        </form>
+        <form method="POST" action="{{ url_for('usuario.eliminar_usuario', usuario_id=usuario.idUsuario) }}" style="display: inline;">
+            <button type="submit">Eliminar</button>
+        </form>
+      </li>
+      {% endfor %}
+    </ul>
+
+    {% if get_flashed_messages() %} {% for message in get_flashed_messages() %}
+    <p>{{ message }}</p>
+    {% endfor %} {% endif %}
+
+    <button onclick="window.location.href='/'">Regresar al home</button>
+    <button onclick="window.location.href='/usuario/agregar'">
+      Agregar Usuario
+    </button>
+  </body>
+</html>

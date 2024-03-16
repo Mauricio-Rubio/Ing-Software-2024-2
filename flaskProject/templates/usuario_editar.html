@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Usuario</title>
+</head>
+<body>
+
+    {{ usuario}}
+
+    <form action="{{ url_for('usuario.actualizar_usuario', usuario_id=usuario.idUsuario) }}" method="POST">
+        <h1>Modificar Usuario</h1>
+        <input type="text" name="nombre" placeholder="Nombre" value="{{ usuario.nombre }}">
+        <input type="text" name="apPat" placeholder="Apellido Paterno" value="{{ usuario.apPat }}">
+        <input type="text" name="apMat" placeholder="Apellido Materno" value="{{ usuario.apMat }}">
+        <input type="password" name="password" placeholder="Password" value="{{ usuario.password }}">
+        <input type="text" name="email" placeholder="Email" value="{{ usuario.email }}">
+        <input type="file" name="profilePicture" accept="image/*">
+        <input type="checkbox" name="superUser" value="1">
+        <input type="submit" value="Modificar">
+    </form>
+    {% if get_flashed_messages() %} {% for message in get_flashed_messages() %}
+    <p>{{ message }}</p>
+    {% endfor %} {% endif %}
+    <a href="{{ url_for('usuario.ver_usuario') }}">Cancelar</a>
+</body>
+</html>
